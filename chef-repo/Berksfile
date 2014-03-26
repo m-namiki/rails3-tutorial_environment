@@ -1,0 +1,7 @@
+site :opscode
+
+cookbook 'yum'
+cookbook 'ruby_build'
+cookbook 'rbenv'
+
+cookbook 'nodejs'
