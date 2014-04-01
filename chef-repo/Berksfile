@@ -5,3 +5,5 @@ cookbook 'ruby_build'
 cookbook 'rbenv'
 
 cookbook 'nodejs'
+
+cookbook 'ntp'

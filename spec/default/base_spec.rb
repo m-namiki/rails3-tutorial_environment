@@ -58,3 +58,21 @@ describe command('node -v') do
   let(:path) { '/usr/local/bin' }
   it { should return_stdout 'v0.10.15' }
 end
+
+describe package('bind-utils') do
+  it { should be_installed }
+end
+
+describe package('ntp') do
+  it { should be_installed }
+end
+
+describe file('/etc/ntp.conf') do
+  it { should be_file }
+  its(:content) { should match /server ntp.nict.jp/}
+end
+
+describe service('ntpd') do
+  it { should be_enabled }
+  it { should be_running }
+end

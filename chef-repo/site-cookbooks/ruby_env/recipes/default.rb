@@ -34,10 +34,8 @@ yum_repository 'remi' do
   action :create
 end
 
-%w{sqlite-devel}.each do |p|
-  package p do
-    action :install
-  end
+package "sqlite-devel" do
+  action :install
 end
 log "done package install."
 
@@ -57,3 +55,7 @@ gem_package "rails" do
   version '3.2.14'
 end
 log "done rails3 install."
+
+package "bind-utils" do
+  action :install
+end
