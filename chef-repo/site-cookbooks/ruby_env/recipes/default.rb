@@ -59,3 +59,18 @@ log "done rails3 install."
 package "bind-utils" do
   action :install
 end
+log "done bind-utils install."
+
+file "/etc/localtime" do
+  content IO.read("/usr/share/zoneinfo/Asia/Tokyo")
+  action :nothing
+end
+
+template "/etc/sysconfig/clock" do
+  source 'clock.erb'
+  owner 'root'
+  group 'root'
+  mode '0644'
+  notifies :create, resources(:file => "/etc/localtime"), :immediately
+end
+log "done copy to /etc/sysconfig/clock."

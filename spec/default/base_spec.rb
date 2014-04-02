@@ -63,6 +63,12 @@ describe package('bind-utils') do
   it { should be_installed }
 end
 
+describe file('/etc/sysconfig/clock') do
+  it { should be_file }
+  its(:content) { should match /ZONE="Asia\/Tokyo"/ }
+  its(:content) { should match /UTC="false"/ }
+end
+
 describe package('ntp') do
   it { should be_installed }
 end
@@ -70,6 +76,7 @@ end
 describe file('/etc/ntp.conf') do
   it { should be_file }
   its(:content) { should match /server ntp.nict.jp/}
+  its(:content) { should match /ntp.jst.mfeed.ad.jp/}
 end
 
 describe service('ntpd') do
