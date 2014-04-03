@@ -76,7 +76,7 @@ end
 describe file('/etc/ntp.conf') do
   it { should be_file }
   its(:content) { should match /server ntp.nict.jp/}
-  its(:content) { should match /ntp.jst.mfeed.ad.jp/}
+  its(:content) { should match /server ntp.jst.mfeed.ad.jp/}
 end
 
 describe service('ntpd') do
